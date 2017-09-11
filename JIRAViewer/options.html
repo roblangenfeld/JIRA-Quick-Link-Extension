@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>JIRA Server Settings</title>
+        <script src="options.js"></script>
+        <script src="jquery.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="options.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- Include the plugin's CSS and JS: -->
+        <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="datagrid">
+        <table id=jira_servers>
+            <thead>
+                <tr>
+                    <th>JIRA Server URL<br />(Must start with https://)</th>
+                    <th>JIRA Project</th>
+                    <th>JIRA User</th>
+                    <th colspan="2">JIRA Tags</th>
+                    <th colspan="1"></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div id="paging">
+                            <ul>
+                                <li><a href="#" id=new><span>New JIRA Server</span></a></li>
+                                <li>
+                                    <input id="darkmode" name="darkmode" type="checkbox"></input>
+                                    <label for="darkmode">Dark Mode?</label>
+                                </li>
+                                <li>
+                                    <input id="show_assigned_subtasks" name="show_assigned_subtasks" type="checkbox"></input>
+                                    <label for="show_assigned_subtasks">Show assigned subtasks?</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <table>
+            <tr id=jira-server-template hidden class="jira_option_table">
+                <td>
+                    <input type=text class="jira-url">
+                </td>
+                <td>
+                    <input type=text class="jira-project">
+                </td>
+                <td>
+                    <input type=text class="jira-user">
+                </td>
+                <td>
+                    <select class="jira-selector" id="example-getting-started" multiple="multiple"></select>
+                </td>
+                <td  style="border-left:0px">
+                    <button class="refresh-tags" id="refresh-tags">Refresh tags</button>
+                </td>
+                <td>
+                    <button class="remove">Remove</button>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </body>
+</html>

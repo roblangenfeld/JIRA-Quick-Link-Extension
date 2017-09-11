@@ -1,0 +1,129 @@
+html {
+  margin: 0;
+  padding: 0;
+  height:100%;
+  min-height: 300px;
+}
+
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 12px;
+  height: 300px;
+  overflow: hidden;
+  width: auto;
+  min-width:350px;
+  max-width: 500px;
+  display:flex;
+}
+
+body .dark, .dark, .dark a:visited { background-color: #23272A; }
+
+body .dark, .dark, .dark a:visited, .dark a { color: #99AAB5; }
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover { text-decoration: underline; }
+
+hr { margin: 0; }
+
+footer, #status, footer a {
+    background-color: #2A5083;
+    color: #FFFFFF!important;
+}
+
+#status {
+  /* avoid an excessively wide status text */
+  /*white-space: pre;*/
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.2em;
+  position:fixed;
+  left:0px;
+  top:0px;
+  height:25px;
+  width:100%;
+  margin-bottom: -10px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.tag {
+    background: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000;
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: bold;
+    line-height: 80%;
+    margin: 0;
+    margin-right: 5px;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.open {
+    background-color: #0f0;
+}
+
+.inProgress {
+    background-color: #ffd351;
+}
+
+.closed {
+    background-color: #f00;
+}
+
+#jira-list{
+    width: auto;
+    min-width: 350px;
+    max-width: 500px;
+    position:absolute;
+    top: 30px;
+    bottom: 21px;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.jira-block  {
+    margin-top: 7.5px;
+    display:block;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.subTask {
+  padding-left: 10px;
+  max-width: 340px;
+}
+
+.subTask:before {
+  	content: "\21B3";
+    margin-right:5px;
+    margin-left:5px;
+}
+
+.priority {
+    margin-right: 5px;
+    height: 12px;
+    width: 12px;
+    margin-bottom: -3px;
+}
+
+footer {
+   position:absolute;
+   left:0;
+   bottom:0;
+   right:0;
+   height:20px;
+   width:100%;
+   margin-top: -10px;
+   text-align: center;
+}
