@@ -1,16 +1,30 @@
 {
   "manifest_version": 2,
-
   "name": "JIRA Quick Links",
   "description": "This extension shows a list of all assigned and opened jiras",
   "version": "1.0",
-  "background": {"scripts": ["bg.js", "browser-polyfill.js"]},
+  "background": {
+    "scripts": [
+      "bg.js",
+      "browser-polyfill.js",
+      "jira.js",
+      "jiraserver.js",
+      "background.js"
+    ],
+    "persistent": true
+  },
   "options_page": "options.html",
-  "icons": { "16": "icon16.png",
-           "48": "icon48.png",
-          "128": "icon128.png" },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "browser_action": {
-	"default_icon": "icon48.png",
+    "default_icon": {
+      "48": "icon48.png",
+      "16": "icon16.png",
+      "128": "icon128.png"
+    },
     "default_popup": "popup.html",
     "default_title": "Click here for a list of JIRA links"
   },

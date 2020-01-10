@@ -1,26 +1,33 @@
-//Object class representing a JIRA.
-function JIRA(data){
+// Object class representing a JIRA.
+class JIRA {
+  constructor(data) {
     this.data = data;
     this.children = [];
     this.parentJIRA;
-}
-
-JIRA.prototype.addChild = function addChild(childJIRA){
-        this.children.push(childJIRA);
-}
-
-JIRA.prototype.getChildren = function getChildren(){
+    this.id = data.id;
+  }
+  
+  addChild(childJIRA) {
+    this.children.push(childJIRA);
+  }
+  
+  getChildren() {
     return this.children;
-}
-
-JIRA.prototype.setParent = function setParent(parentJIRA){
+  }
+  
+  setParent(parentJIRA) {
     this.parentJIRA = parentJIRA;
-}
-
-JIRA.prototype.getParent = function getParent(){
+  }
+  
+  dataHasParent() {
+    return this.data.fields.parent;
+  }
+  
+  getParent() {
     return this.parentJIRA;
-}
-
-JIRA.prototype.getData = function getData(){
+  }
+  
+  getData() {
     return this.data;
+  }
 }
