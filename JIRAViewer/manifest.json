@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "JIRA Quick Links",
   "description": "This extension shows a list of all assigned and opened jiras",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "background": {
     "scripts": [
       "bg.js",

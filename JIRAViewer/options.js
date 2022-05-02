@@ -34,6 +34,15 @@ function parseJIRAStatuses(statuses, selectorID, previouslySelected) {
       nonSelectedText: 'Select JIRA Tags!'
     });
   }
+  statuses.sort((a, b) => { 
+    if (previouslySelected.includes(a.name) && !previouslySelected.includes(b.name)) {
+      return -1;
+    }
+    if (previouslySelected.includes(b.name) && !previouslySelected.includes(a.name)) {
+      return 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
   for (var i = 0; i < statuses.length; i++) {
     var opt = document.createElement('option');
     opt.value = statuses[i].name;
@@ -46,9 +55,7 @@ function parseJIRAStatuses(statuses, selectorID, previouslySelected) {
 
   //If there is any previously selected, select them again.
   if (previouslySelected) {
-    for (var i = 0; i < previouslySelected.length; i++) {
-      $('#' + selectorID).multiselect('select', previouslySelected[i]);
-    }
+    previouslySelected.forEach(str => $('#' + selectorID).multiselect('select', str))
   }
 }
 
