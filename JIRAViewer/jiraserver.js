@@ -1,5 +1,10 @@
 class JIRAServer {
   static next_id = 0;
+  static {
+    const current = JSON.parse(localStorage.getItem('jira_servers')).map(j => j.id);
+    current.sort();
+    JIRAServer.next_id = (current[current.length - 1]++) || 0;
+  }
   
   constructor(data) {
     if (document.getElementById('jira_servers')) {
@@ -25,8 +30,8 @@ class JIRAServer {
   
       var selector = this.getElement('jira-selector');
       selector.id = selector.id + jira_server_id;
-      if(data && data.jira_url){
-        loadStatuses(data.jira_url, selector.id, tags);
+      if(data && data.url){
+        loadStatuses(data.url, selector.id, tags);
       }
   
       this.getElement('jira-url').onkeyup = this.storeServer;
@@ -46,14 +51,17 @@ class JIRAServer {
       this.getElement('refresh-tags').onclick = function () {
         loadStatuses(jira_server.getElement('jira-url').value, selector.id, $('#' + selector.id).val());
       };
+      this.id = jira_server_id;
     } else {
       ({
         url: this.url,
         project: this.project,
         user: this.user,
         tags: this.tags,
-        issues: this.issues
+        issues: this.issues,
+        id: this.id,
       } = data);
+      if (typeof this.id === 'undefined') this.id = JIRAServer.next_id++;
     }
 
     if (typeof this.issues === 'undefined') {
@@ -151,14 +159,10 @@ class JIRAServer {
   
   storeServer() {
     let current = JSON.parse(localStorage.jira_servers);
-    if (current.find(s => s.id === this.id)) {
-      // remove object
-      const place = current.find(s => s.id === this.id);
-      current.splice(place, 1);
-    }
     // add newest version
     if (this.node) {
-      current.push({
+      current.unshift({
+        id: this.id,
         url: this.getElement('jira-url').value,
         project: this.getElement('jira-project').value,
         user: this.getElement('jira-user').value,
@@ -166,7 +170,8 @@ class JIRAServer {
         issues: this.issues,
       });
     } else {
-      current.push({
+      current.unshift({
+        id: this.id,
         url: this.url,
         project: this.project,
         user: this.user,
@@ -174,7 +179,17 @@ class JIRAServer {
         issues: this.issues,
       });
     }
-    current = current.filter(s => s.url);
+    const ids = current.map(j => j.id);
+    const removed_ids = [];
+    current = current.map(j => {
+      if (removed_ids.includes(j.id)) {
+        return undefined;
+      } else {
+        removed_ids.push(j.id);
+        return j;
+      }
+    });
+    current = current.filter(s => s && s.url);
     localStorage.jira_servers = JSON.stringify(current);
   }
 }
