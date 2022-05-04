@@ -60,6 +60,9 @@ function parseJIRAStatuses(statuses, selectorID, previouslySelected) {
 }
 
 window.onload = function () {
+  if (localStorage.darkMode === "true") {
+    document.querySelector('body').classList.add('dark');
+  }
   loadJIRAs();
   document.getElementById('new').onclick = function () {
     new JIRAServer();
