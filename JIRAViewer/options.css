@@ -1,3 +1,28 @@
+body .dark, .dark, .dark a:visited, .dark .datagrid, .dark input, .dark button {
+  background-color: #23272A;
+  color: #99AAB5;
+}
+
+dark .datagrid table tbody td {
+  border-left-color: #23272A;
+}
+
+.dark button {
+  border-color: transparent;
+}
+
+.dark button:hover {
+  background-color: #2C2F33;
+  color: white;
+}
+
+.dark a { color: #99AAB5; }
+
+.dark tbody .alt, .dark .datagrid table tbody .alt td,
+  .dark tfoot, .dark .datagrid table tfoot td div {
+  background-color: #2C2F33;
+}
+
 .multiselect-container {
  height: 500px;
  overflow-y: scroll;
